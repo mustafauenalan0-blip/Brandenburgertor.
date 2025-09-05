@@ -3,74 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Das Brandenburger Tor</title>
+  <title>Brandenburger Tor</title>
+  
+  <!-- Google Fonts für Apple-ähnlichen Stil -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fafb; color: #333; }
-    header, footer { background: #fff; padding: 20px; text-align: center; border-bottom: 1px solid #ddd; }
-    main { max-width: 800px; margin: 20px auto; padding: 0 20px; }
-    h1, h2 { color: #111; }
-    section { margin-bottom: 30px; }
-    .funfact { background: #fffbec; border: 1px solid #ffe58f; padding: 10px 15px; border-radius: 10px; margin: 10px 0; }
-    ul { list-style: inside disc; }
+    /* Basis-Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f0f3f5, #e6ebf1);
+      color: #1c1c1c;
+      overflow-x: hidden;
+    }
+
+    /* Animation beim Öffnen */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: linear-gradient(to right, #4b6cb7, #182848);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #d0d0d0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: #ffffffaa;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #182848;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4b6cb7;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    section h2 {
+      color: #4b6cb7;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    section p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .credits {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Bildstil */
+    .image-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 0.5s;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Apple-Style Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: #4b6cb7;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #182848;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Das Brandenburger Tor</h1>
-  <p>Von Mustafa Ünalan, Armando Pali & Alpha Bah</p>
-</header>
+  <header>
+    <h1>Brandenburger Tor</h1>
+    <p>Ein historisches Wahrzeichen Berlins und Symbol der deutschen Einheit</p>
+  </header>
 
-<main>
-  <section>
-    <p>Das Brandenburger Tor ist eines der berühmtesten Wahrzeichen Berlins und ganz Deutschlands. 
-       Es wurde zwischen 1788 und 1791 von Carl Gotthard Langhans im klassizistischen Stil erbaut.</p>
-    <div class="funfact">Fun Fact: Früher stand das Tor am Rand der Stadt und diente als echtes Stadttor!</div>
+  <nav>
+    <a href="#geschichte">Geschichte</a>
+    <a href="#architektur">Architektur</a>
+    <a href="#heute">Heute</a>
+    <a href="#credits">Credits</a>
+  </nav>
+
+  <section id="geschichte">
+    <h2>Geschichte</h2>
+    <p>Das Brandenburger Tor wurde zwischen 1788 und 1791 erbaut und gilt als eines der bekanntesten Wahrzeichen Deutschlands. Es befindet sich am Pariser Platz in Berlin und markierte einst den Zugang zur Stadt. Während der Teilung Berlins stand es im Grenzgebiet und symbolisierte die Trennung, später die Einheit Deutschlands nach dem Fall der Berliner Mauer 1989.</p>
+
+    <div class="image-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Brandenburger_Tor_abends.jpg" alt="Brandenburger Tor bei Nacht">
+    </div>
   </section>
 
-  <section>
-    <h2>Architektur & Aussehen</h2>
-    <ul>
-      <li>Höhe: 26 Meter, Breite: 65 Meter</li>
-      <li>12 dorische Säulen mit 5 Durchgängen</li>
-      <li>Quadriga mit Siegesgöttin Eirene</li>
-    </ul>
-    <div class="funfact">Fun Fact: Napoleon brachte 1806 die Quadriga nach Paris – Preußen holte sie 1814 zurück!</div>
+  <section id="architektur">
+    <h2>Architektur</h2>
+    <p>Das Tor wurde von Carl Gotthard Langhans im klassizistischen Stil entworfen. Es besteht aus zwölf dorischen Säulen, die fünf Durchgänge bilden. Die berühmte Quadriga auf dem Tor wurde von Johann Gottfried Schadow entworfen – eine Wagenlenker-Skulptur mit vier Pferden, die die Siegesgöttin Victoria führt.</p>
+
+    <div class="image-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Brandenburger_Tor_Berlin.jpg" alt="Quadriga auf dem Brandenburger Tor">
+    </div>
   </section>
 
-  <section>
-    <h2>Geschichte & Bedeutung</h2>
-    <ul>
-      <li>18./19. Jahrhundert: Symbol für Preußens Macht</li>
-      <li>1933–1945: Von den Nationalsozialisten genutzt</li>
-      <li>1945: Im Zweiten Weltkrieg beschädigt</li>
-      <li>Kalter Krieg: Stand im Niemandsland zwischen Ost- und Westberlin</li>
-      <li>1989: Fall der Mauer – Symbol der Einheit</li>
-    </ul>
-    <div class="funfact">Fun Fact: 1989 gingen Helmut Kohl und Hans Modrow gemeinsam durchs Tor – ein weltberühmter Moment!</div>
+  <section id="heute">
+    <h2>Heute</h2>
+    <p>Heute ist das Brandenburger Tor ein beliebtes Touristenziel und ein Symbol für Frieden, Freiheit und die Wiedervereinigung Deutschlands. Es wird oft für große Feierlichkeiten, Konzerte und politische Events genutzt. Die Umgebung ist ein zentraler Ort für Kultur, Geschichte und Tourismus.</p>
+
+    <a href="#geschichte" class="btn">Mehr zur Geschichte</a>
   </section>
 
-  <section>
-    <h2>Heutige Bedeutung</h2>
-    <ul>
-      <li>Wichtigstes Wahrzeichen Deutschlands</li>
-      <li>Millionen Besucher pro Jahr</li>
-      <li>Ort für Feiern, Konzerte und Demonstrationen</li>
-      <li>Symbol für Freiheit, Einheit und Frieden</li>
-    </ul>
-    <div class="funfact">Fun Fact: Heute dürfen nur noch Fußgänger und Fahrräder durchs Tor – keine Autos mehr!</div>
+  <section id="credits">
+    <h2>Credits</h2>
+    <p>Website erstellt von: <strong>Mustafa Ünalan, Armando Pali und Alpha Bah</strong></p>
+    <p>Design inspiriert vom Apple-Stil mit modernen Farben und Animationen.</p>
   </section>
-
-  <section>
-    <h2>Fazit</h2>
-    <p>Das Brandenburger Tor ist nicht nur ein Bauwerk, sondern ein lebendiges Symbol für die deutsche Geschichte 
-       und für Frieden, Einheit und Freiheit.</p>
-  </section>
-</main>
-
-<footer>
-  <p>© 2025 Brandenburger Tor – Lernseite | Mustafa Ünalan, Armando Pali & Alpha Bah</p>
-</footer>
 
 </body>
 </html>
