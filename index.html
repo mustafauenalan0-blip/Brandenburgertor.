@@ -1,0 +1,225 @@
+import { motion } from "framer-motion";
+import { Landmark, Star, Ruler, History, Crown, Footprints, Flag, Bike } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
+export default function BrandenburgerTorSite() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
+      {/* Header / Hero */}
+      <header className="relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <SVGGate className="w-full h-full" />
+        </div>
+        <div className="container mx-auto px-6 py-16 md:py-24 relative">
+          <div className="max-w-4xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl font-extrabold tracking-tight flex items-center gap-3"
+            >
+              <Landmark className="w-10 h-10 md:w-14 md:h-14" />
+              Das Brandenburger Tor
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mt-6 text-lg md:text-xl leading-relaxed text-slate-600"
+            >
+              Das Brandenburger Tor ist eines der berühmtesten Wahrzeichen Berlins und ganz Deutschlands. 
+              Es wurde zwischen 1788 und 1791 von Carl Gotthard Langhans im klassizistischen Stil erbaut.
+            </motion.p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Badge className="text-base py-1 px-3 rounded-2xl">Wahrzeichen</Badge>
+              <Badge className="text-base py-1 px-3 rounded-2xl" variant="secondary">Klassizismus</Badge>
+              <Badge className="text-base py-1 px-3 rounded-2xl" variant="outline">Berlin</Badge>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-6 pb-24">
+        {/* Fun Fact 1 */}
+        <FunFact icon={<Star className="w-5 h-5" />}>
+          Früher stand das Tor am Rand der Stadt und diente als echtes Stadttor!
+        </FunFact>
+
+        {/* Architektur & Aussehen */}
+        <section id="architektur" className="mt-12 md:mt-16">
+          <SectionTitle icon={<Ruler className="w-7 h-7" />} title="Architektur & Aussehen" />
+          <div className="grid md:grid-cols-3 gap-6 mt-6">
+            <InfoCard title="Maße" icon={<Ruler className="w-5 h-5" />}>Höhe: 26 Meter • Breite: 65 Meter</InfoCard>
+            <InfoCard title="Säulen & Durchgänge" icon={<Crown className="w-5 h-5" />}>12 dorische Säulen mit 5 Durchgängen</InfoCard>
+            <InfoCard title="Quadriga" icon={<Flag className="w-5 h-5" />}>Quadriga mit Siegesgöttin Eirene</InfoCard>
+          </div>
+        </section>
+
+        <FunFact icon={<History className="w-5 h-5" />}>
+          Napoleon brachte 1806 die Quadriga nach Paris – Preußen holte sie 1814 zurück!
+        </FunFact>
+
+        {/* Geschichte & Bedeutung */}
+        <section id="geschichte" className="mt-12 md:mt-16">
+          <SectionTitle icon={<History className="w-7 h-7" />} title="Geschichte & Bedeutung" />
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <Timeline />
+            <Card className="rounded-2xl shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-xl">Vom Macht-Symbol zum Freiheitszeichen</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-600 leading-relaxed">
+                Über Jahrhunderte wechselte die Bedeutung des Tores: vom preußischen Repräsentationsbau 
+                über NS-Inszenierungen und Kriegsruine bis zum geteilten Niemandsland im Kalten Krieg. 
+                Seit dem Fall der Mauer 1989 steht es weltweit für Einheit, Frieden und Freiheit.
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <FunFact icon={<Star className="w-5 h-5" />}>
+          1989 gingen Helmut Kohl und Hans Modrow gemeinsam durchs Tor – ein weltberühmter Moment!
+        </FunFact>
+
+        {/* Heutige Bedeutung */}
+        <section id="heute" className="mt-12 md:mt-16">
+          <SectionTitle icon={<Footprints className="w-7 h-7" />} title="Heutige Bedeutung" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <InfoCard title="Wichtigstes Wahrzeichen" icon={<Landmark className="w-5 h-5" />}>Symbol für Deutschland</InfoCard>
+            <InfoCard title="Besucher" icon={<Footprints className="w-5 h-5" />}>Millionen pro Jahr</InfoCard>
+            <InfoCard title="Veranstaltungen" icon={<Flag className="w-5 h-5" />}>Feiern, Konzerte & Demonstrationen</InfoCard>
+            <InfoCard title="Werte" icon={<Star className="w-5 h-5" />}>Freiheit, Einheit & Frieden</InfoCard>
+          </div>
+        </section>
+
+        <FunFact icon={<Bike className="w-5 h-5" />}>
+          Heute dürfen nur noch Fußgänger und Fahrräder durchs Tor – keine Autos mehr!
+        </FunFact>
+
+        {/* Fazit */}
+        <section id="fazit" className="mt-12 md:mt-16">
+          <Card className="rounded-2xl shadow-sm border-2">
+            <CardHeader>
+              <CardTitle className="text-2xl">Fazit</CardTitle>
+            </CardHeader>
+            <CardContent className="text-lg text-slate-700 leading-relaxed">
+              Das Brandenburger Tor ist nicht nur ein Bauwerk, sondern ein lebendiges Symbol für die deutsche Geschichte 
+              und für Frieden, Einheit und Freiheit.
+            </CardContent>
+          </Card>
+        </section>
+      </main>
+
+      <footer className="border-t bg-white/60 backdrop-blur supports-[backdrop-filter]:bg-white/40">
+        <div className="container mx-auto px-6 py-8 text-sm text-slate-500 flex flex-wrap items-center gap-3 justify-between">
+          <span>© {new Date().getFullYear()} Brandenburger Tor – Lernseite | Mustafa Ünalan, Armando Pali & Alpha Bah</span>
+          <nav className="flex gap-4">
+            <a href="#architektur" className="hover:underline">Architektur</a>
+            <a href="#geschichte" className="hover:underline">Geschichte</a>
+            <a href="#heute" className="hover:underline">Heute</a>
+            <a href="#fazit" className="hover:underline">Fazit</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function SectionTitle({ icon, title }: { icon: React.ReactNode; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="p-2 rounded-2xl bg-slate-100 border">
+        {icon}
+      </div>
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">{title}</h2>
+    </div>
+  );
+}
+
+function InfoCard({ title, icon, children }: { title: string; icon?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <Card className="rounded-2xl shadow-sm">
+      <CardHeader className="pb-2">
+        <CardTitle className="flex items-center gap-2 text-lg">
+          {icon}
+          <span>{title}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="text-slate-600">{children}</CardContent>
+    </Card>
+  );
+}
+
+function FunFact({ children, icon }: { children: React.ReactNode; icon?: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.4 }}
+      className="mt-10"
+    >
+      <div className="relative">
+        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-amber-200 via-amber-100 to-yellow-50 blur-sm" />
+        <div className="relative rounded-2xl border bg-white p-4 md:p-5 flex items-start gap-3">
+          <div className="p-2 rounded-xl bg-amber-100 border">
+            {icon ?? <Star className="w-5 h-5" />}
+          </div>
+          <p className="text-slate-800 font-medium">{children}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function Timeline() {
+  const items = [
+    { year: "18./19. Jh.", text: "Symbol für Preußens Macht" },
+    { year: "1933–1945", text: "Von den Nationalsozialisten genutzt" },
+    { year: "1945", text: "Im Zweiten Weltkrieg beschädigt" },
+    { year: "Kalter Krieg", text: "Stand im Niemandsland zwischen Ost- und Westberlin" },
+    { year: "1989", text: "Fall der Mauer – Symbol der Einheit" },
+  ];
+
+  return (
+    <Card className="rounded-2xl shadow-sm">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xl">Zeitstrahl</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ol className="relative border-s pl-6">
+          {items.map((it, i) => (
+            <li key={i} className="mb-6 ms-4">
+              <span className="absolute -start-2.5 flex h-5 w-5 items-center justify-center rounded-full border bg-white" />
+              <div className="text-sm text-slate-500">{it.year}</div>
+              <div className="font-medium text-slate-800">{it.text}</div>
+            </li>
+          ))}
+        </ol>
+      </CardContent>
+    </Card>
+  );
+}
+
+// Minimalistisches SVG des Tores als Hintergrundornament
+function SVGGate({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 800 300" className={className} preserveAspectRatio="xMidYMid slice" aria-hidden>
+      <g stroke="currentColor" fill="none">
+        <rect x="50" y="120" width="700" height="120" rx="6" ry="6" strokeWidth="2" />
+        <line x1="120" y1="120" x2="120" y2="240" strokeWidth="2" />
+        <line x1="200" y1="120" x2="200" y2="240" strokeWidth="2" />
+        <line x1="280" y1="120" x2="280" y2="240" strokeWidth="2" />
+        <line x1="360" y1="120" x2="360" y2="240" strokeWidth="2" />
+        <line x1="440" y1="120" x2="440" y2="240" strokeWidth="2" />
+        <line x1="520" y1="120" x2="520" y2="240" strokeWidth="2" />
+        <line x1="600" y1="120" x2="600" y2="240" strokeWidth="2" />
+        <line x1="680" y1="120" x2="680" y2="240" strokeWidth="2" />
+        <rect x="80" y="90" width="640" height="20" rx="4" ry="4" strokeWidth="2" />
+        <rect x="120" y="60" width="560" height="20" rx="4" ry="4" strokeWidth="2" />
+      </g>
+    </svg>
+  );
+}
