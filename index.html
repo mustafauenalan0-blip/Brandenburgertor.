@@ -1,49 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Das Brandenburger Tor</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9fafb; color: #333; }
+    header, footer { background: #fff; padding: 20px; text-align: center; border-bottom: 1px solid #ddd; }
+    main { max-width: 800px; margin: 20px auto; padding: 0 20px; }
+    h1, h2 { color: #111; }
+    section { margin-bottom: 30px; }
+    .funfact { background: #fffbec; border: 1px solid #ffe58f; padding: 10px 15px; border-radius: 10px; margin: 10px 0; }
+    ul { list-style: inside disc; }
+  </style>
+</head>
+<body>
 
-        <div className="container mx-auto px-6 py-16 md:py-24 relative">
-          <div className="max-w-4xl">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl font-extrabold tracking-tight flex items-center gap-3"
-            >
-              <Landmark className="w-10 h-10 md:w-14 md:h-14" />
-              Das Brandenburger Tor
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-6 text-lg md:text-xl leading-relaxed text-slate-600"
-            >
-              Das Brandenburger Tor ist eines der berühmtesten Wahrzeichen Berlins und ganz Deutschlands. 
-              Es wurde zwischen 1788 und 1791 von Carl Gotthard Langhans im klassizistischen Stil erbaut.
-            </motion.p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Badge className="text-base py-1 px-3 rounded-2xl">Wahrzeichen</Badge>
-              <Badge className="text-base py-1 px-3 rounded-2xl" variant="secondary">Klassizismus</Badge>
-              <Badge className="text-base py-1 px-3 rounded-2xl" variant="outline">Berlin</Badge>
-            </div>
-          </div>
-        </div>
-      </header>
+<header>
+  <h1>Das Brandenburger Tor</h1>
+  <p>Von Mustafa Ünalan, Armando Pali & Alpha Bah</p>
+</header>
 
-      <main className="container mx-auto px-6 pb-24">
-        {/* Fun Fact 1 */}
-        <FunFact icon={<Star className="w-5 h-5" />}>
-          Früher stand das Tor am Rand der Stadt und diente als echtes Stadttor!
-        </FunFact>
+<main>
+  <section>
+    <p>Das Brandenburger Tor ist eines der berühmtesten Wahrzeichen Berlins und ganz Deutschlands. 
+       Es wurde zwischen 1788 und 1791 von Carl Gotthard Langhans im klassizistischen Stil erbaut.</p>
+    <div class="funfact">Fun Fact: Früher stand das Tor am Rand der Stadt und diente als echtes Stadttor!</div>
+  </section>
 
-        {/* Architektur & Aussehen */}
-        <section id="architektur" className="mt-12 md:mt-16">
-          <SectionTitle icon={<Ruler className="w-7 h-7" />} title="Architektur & Aussehen" />
-          <div className="grid md:grid-cols-3 gap-6 mt-6">
-            <InfoCard title="Maße" icon={<Ruler className="w-5 h-5" />}>Höhe: 26 Meter • Breite: 65 Meter</InfoCard>
-            <InfoCard title="Säulen & Durchgänge" icon={<Crown className="w-5 h-5" />}>12 dorische Säulen mit 5 Durchgängen</InfoCard>
-            <InfoCard title="Quadriga" icon={<Flag className="w-5 h-5" />}>Quadriga mit Siegesgöttin Eirene</InfoCard>
-          </div>
-        </section>
+  <section>
+    <h2>Architektur & Aussehen</h2>
+    <ul>
+      <li>Höhe: 26 Meter, Breite: 65 Meter</li>
+      <li>12 dorische Säulen mit 5 Durchgängen</li>
+      <li>Quadriga mit Siegesgöttin Eirene</li>
+    </ul>
+    <div class="funfact">Fun Fact: Napoleon brachte 1806 die Quadriga nach Paris – Preußen holte sie 1814 zurück!</div>
+  </section>
 
-        <FunFact icon={<History className="w-5 h-5" />}>
-          Napoleon brachte 1806 die Quadriga nach Paris – Preußen holte sie 1814 zurück!
-        </FunFact>
+  <section>
+    <h2>Geschichte & Bedeutung</h2>
+    <ul>
+      <li>18./19. Jahrhundert: Symbol für Preußens Macht</li>
+      <li>1933–1945: Von den Nationalsozialisten genutzt</li>
+      <li>1945: Im Zweiten Weltkrieg beschädigt</li>
+      <li>Kalter Krieg: Stand im Niemandsland zwischen Ost- und Westberlin</li>
+      <li>1989: Fall der Mauer – Symbol der Einheit</li>
+    </ul>
+    <div class="funfact">Fun Fact: 1989 gingen Helmut Kohl und Hans Modrow gemeinsam durchs Tor – ein weltberühmter Moment!</div>
+  </section>
+
+  <section>
+    <h2>Heutige Bedeutung</h2>
+    <ul>
+      <li>Wichtigstes Wahrzeichen Deutschlands</li>
+      <li>Millionen Besucher pro Jahr</li>
+      <li>Ort für Feiern, Konzerte und Demonstrationen</li>
+      <li>Symbol für Freiheit, Einheit und Frieden</li>
+    </ul>
+    <div class="funfact">Fun Fact: Heute dürfen nur noch Fußgänger und Fahrräder durchs Tor – keine Autos mehr!</div>
+  </section>
+
+  <section>
+    <h2>Fazit</h2>
+    <p>Das Brandenburger Tor ist nicht nur ein Bauwerk, sondern ein lebendiges Symbol für die deutsche Geschichte 
+       und für Frieden, Einheit und Freiheit.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Brandenburger Tor – Lernseite | Mustafa Ünalan, Armando Pali & Alpha Bah</p>
+</footer>
+
+</body>
+</html>
