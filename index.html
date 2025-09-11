@@ -1,178 +1,141 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Das Brandenburger Tor</title>
-  <style>
-    /* === Reset & Grunddesign === */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-           background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandenburger Tor - Interaktive Geschichte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Roboto', sans-serif; line-height: 1.6; background: #f5f5f5; color: #333; }
 
-    /* === Header === */
-    header {
-      background: linear-gradient(to right, #111, #333);
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 { font-size: 3rem; margin-bottom: 10px; }
-    header p { font-size: 1.2rem; opacity: 0.8; }
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex; justify-content: center;
+            padding: 1em 0; z-index: 100;
+        }
+        nav a { color: white; margin: 0 1.5em; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #f0b429; }
 
-    /* === Main Layout === */
-    main { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        header {
+            height: 100vh;
+            background: url('brandenburger_tor.jpg') center/cover no-repeat fixed;
+            display: flex; justify-content: center; align-items: center;
+            position: relative; color: white; text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+        }
+        header::after {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4);
+        }
+        header h1 { position: relative; font-family: 'Playfair Display', serif; font-size: 3.5em; text-align: center; }
 
-    section { margin-bottom: 60px; }
-    section h2 { font-size: 2rem; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        section {
+            max-width: 1000px; margin: 4em auto; padding: 0 2em;
+        }
+        section h2 { font-family: 'Playfair Display', serif; font-size: 2.2em; margin-bottom: 1em; border-bottom: 3px solid #f0b429; display: inline-block; padding-bottom: 0.3em; color: #222; }
 
-    p { font-size: 1.1rem; margin-bottom: 15px; }
+        .fact {
+            background: #fff; padding: 2em; margin: 2em 0; border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out;
+        }
+        .fact.visible { opacity: 1; transform: translateY(0); }
 
-    ul { margin-left: 20px; margin-bottom: 20px; }
-    li { margin: 5px 0; }
+        img {
+            width: 100%; margin: 1em 0; border-radius: 10px;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+        img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
 
-    /* === Fun Facts === */
-    .funfact {
-      background: #fff3cd;
-      border-left: 5px solid #ffcd39;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .funfact:hover { background: #ffe58f; }
+        .quad-section {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; align-items: center;
+        }
 
-    /* === Bilder === */
-    .image {
-      margin: 20px 0;
-      text-align: center;
-    }
-    .image img {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-    .image img:hover { transform: scale(1.05); }
+        .author { text-align: center; margin: 5em 0 2em 0; font-style: italic; color: #555; font-size: 1.2em; }
 
-    /* === Timeline === */
-    .timeline {
-      position: relative;
-      margin: 20px 0;
-      padding-left: 30px;
-      border-left: 3px solid #333;
-    }
-    .timeline div {
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .timeline div::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 5px;
-      width: 15px;
-      height: 15px;
-      background: #111;
-      border-radius: 50%;
-    }
+        footer { background: #222; color: #fff; text-align: center; padding: 2em 0; margin-top: 3em; }
 
-    /* === Footer === */
-    footer {
-      background: #111;
-      color: #f5f5f7;
-      padding: 20px;
-      text-align: center;
-    }
-    footer p { font-size: 0.9rem; opacity: 0.8; }
-  </style>
+        /* Parallax Effekt für Bilder */
+        .parallax { 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            border-radius: 10px;
+            margin: 2em 0;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>Das Brandenburger Tor</h1>
-  <p>Von Mustafa Ünalan, Armando Pali & Alpha Bah</p>
-</header>
+    <nav>
+        <a href="#bau">Bau</a>
+        <a href="#geschichte">Geschichte</a>
+        <a href="#historische-events">Historische Events</a>
+        <a href="#bedeutung">Bedeutung</a>
+    </nav>
 
-<main>
-  <!-- Einleitung -->
-  <section>
-    <h2>Einleitung</h2>
-    <p>Das Brandenburger Tor ist eines der bekanntesten Wahrzeichen Berlins und ganz Deutschlands. 
-       Es wurde von <strong>Carl Gotthard Langhans</strong> zwischen 1788 und 1791 im klassizistischen Stil erbaut 
-       und markierte einst den Rand der Stadt.</p>
-    <div class="funfact">💡 Fun Fact: Früher stand das Tor am Stadtrand und diente als echtes Stadttor!</div>
-    <div class="image"><img src="bilder/brandenburger_tor.jpg" alt="Das Brandenburger Tor"></div>
-  </section>
+    <header>
+        <h1>Brandenburger Tor - Symbol der Freiheit</h1>
+    </header>
 
-  <!-- Architektur -->
-  <section>
-    <h2>Architektur & Aussehen</h2>
-    <ul>
-      <li>Höhe: 26 Meter, Breite: 65 Meter</li>
-      <li>12 dorische Säulen mit 5 Durchgängen</li>
-      <li>Gekrönt von der Quadriga mit der Siegesgöttin Eirene</li>
-    </ul>
-    <div class="funfact">💡 Fun Fact: Napoleon brachte 1806 die Quadriga nach Paris – 1814 kam sie zurück nach Berlin!</div>
-    <div class="image"><img src="bilder/quadriga.jpg" alt="Quadriga auf dem Brandenburger Tor"></div>
-  </section>
+    <section id="bau">
+        <h2>1. Bau und Errichtung</h2>
+        <div class="fact">
+            Das Brandenburger Tor wurde zwischen 1788 und 1791 errichtet, auf Geheiß von König Friedrich Wilhelm II. von Preußen. Architekt Carl Gotthard Langhans ließ sich von der antiken griechischen Architektur inspirieren. Mit seinen 12 dorischen Säulen und fünf Durchgängen war es ein imposanter Ausdruck königlicher Macht.
+        </div>
+        <div class="parallax" style="background-image:url('brandenburger_tor.jpg');"></div>
+    </section>
 
-  <!-- Geschichte -->
-  <section>
-    <h2>Geschichte & Bedeutung</h2>
-    <div class="timeline">
-      <div><strong>18./19. Jahrhundert:</strong> Symbol für Preußens Macht</div>
-      <div><strong>1933–1945:</strong> Von den Nationalsozialisten genutzt</div>
-      <div><strong>1945:</strong> Im Zweiten Weltkrieg schwer beschädigt</div>
-      <div><strong>Kalter Krieg:</strong> Stand im Niemandsland zwischen Ost- und Westberlin</div>
-      <div><strong>1989:</strong> Fall der Berliner Mauer – Symbol der Einheit</div>
+    <section id="geschichte">
+        <h2>2. Anlass & Hintergrundgeschichte</h2>
+        <div class="fact">
+            Ursprünglich sollte das Tor ein Friedenssymbol sein und die Stadt Berlin schmücken. Die berühmte Quadriga, die 1793 hinzugefügt wurde, zeigt die Siegesgöttin auf einem von vier Pferden gezogenen Wagen. Sie symbolisiert Triumph, Frieden und Macht.
+        </div>
+        <div class="quad-section">
+            <img src="quadriga.jpg" alt="Quadriga des Brandenburger Tors">
+            <p>Die Quadriga ist nicht nur Kunstwerk, sondern auch ein Symbol für den Sieg des Friedens.</p>
+        </div>
+    </section>
+
+    <section id="historische-events">
+        <h2>3. Historische Events & Berliner Mauer</h2>
+        <div class="fact">
+            Während des Kalten Krieges war das Brandenburger Tor direkt an der Grenze zwischen Ost- und West-Berlin und somit ein Symbol der Teilung. Mit dem Bau der Berliner Mauer 1961 war es für die Öffentlichkeit unzugänglich. Am 9. November 1989 wurde das Tor beim Mauerfall zum globalen Symbol der deutschen Wiedervereinigung.
+        </div>
+        <div class="parallax" style="background-image:url('mauerfall.jpg');"></div>
+    </section>
+
+    <section id="bedeutung">
+        <h2>4. Bedeutung & Symbolik</h2>
+        <div class="fact">
+            Das Brandenburger Tor steht für Freiheit, Einheit und Frieden. Während es ursprünglich Macht und Herrschaft repräsentierte, symbolisiert es heute Demokratie und Zusammenhalt. Es erinnert an die Opfer von Krieg und Teilung und steht gleichzeitig für Hoffnung und Freiheit.
+        </div>
+        <div class="parallax" style="background-image:url('heute.jpg');"></div>
+    </section>
+
+    <div class="author">
+        Erstellt von Mustafa Ünalan, Armando Pali und Alpha Bah
     </div>
-    <div class="funfact">💡 Fun Fact: 1989 gingen Helmut Kohl und Hans Modrow gemeinsam durchs Tor – ein historischer Moment!</div>
-    <div class="image"><img src="bilder/mauerfall.jpg" alt="Fall der Berliner Mauer 1989"></div>
-  </section>
 
-  <!-- Heutige Bedeutung -->
-  <section>
-    <h2>Heutige Bedeutung</h2>
-    <p>Heute ist das Brandenburger Tor das <strong>wichtigste Wahrzeichen Deutschlands</strong>. 
-       Es zieht Millionen Besucher jährlich an und dient als Ort für Feiern, Konzerte, Demonstrationen und nationale Gedenktage. 
-       Besonders zu Silvester wird hier ausgelassen gefeiert.</p>
-    <ul>
-      <li>Symbol für Freiheit, Einheit und Frieden</li>
-      <li>Ort für politische Kundgebungen</li>
-      <li>Kulturelles Zentrum Berlins</li>
-    </ul>
-    <div class="funfact">💡 Fun Fact: Heute dürfen nur Fußgänger und Fahrräder durchs Tor – keine Autos mehr!</div>
-    <div class="image"><img src="bilder/heute.jpg" alt="Brandenburger Tor heute"></div>
-  </section>
+    <footer>
+        &copy; 2025 Brandenburger Tor Info. Alle Rechte vorbehalten.
+    </footer>
 
-  <!-- Fazit -->
-  <section>
-    <h2>Fazit</h2>
-    <p>Das Brandenburger Tor ist weit mehr als nur ein Bauwerk. 
-       Es ist ein <strong>lebendiges Symbol der deutschen Geschichte</strong> und steht für <strong>Frieden, Einheit und Freiheit</strong>. 
-       Wer Berlin besucht, kommt an diesem ikonischen Monument nicht vorbei.</p>
-  </section>
-</main>
+    <script>
+        // Scroll Animation
+        const facts = document.querySelectorAll('.fact');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
 
-<footer>
-  <p>© 2025 Brandenburger Tor Projekt – Erstellt von Mustafa Ünalan, Armando Pali & Alpha Bah</p>
-</footer>
-
-<script>
-  // Interaktive Fun Facts (aufklappen)
-  document.querySelectorAll(".funfact").forEach(fact => {
-    fact.addEventListener("click", () => {
-      alert(fact.textContent);
-    });
-  });
-</script>
+        facts.forEach(fact => observer.observe(fact));
+    </script>
 
 </body>
 </html>
-<img src="brandenburger_tor.jpg" alt="Brandenburger Tor" style="width:100%; border-radius:12px;">
-<img src="heute.jpg" alt="Brandenburger Tor heute" style="width:100%; border-radius:12px;">
-<img src="mauerfall.jpg" alt="Mauerfall 1989 am Brandenburger Tor" style="width:100%; border-radius:12px;">
-<img src="quadriga.jpg" alt="Quadriga auf dem Brandenburger Tor" style="width:100%; border-radius:12px;">
-
